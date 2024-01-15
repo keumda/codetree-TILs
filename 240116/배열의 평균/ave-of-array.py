@@ -14,9 +14,9 @@ for idx, i in enumerate(arr):
         c_avg[jidx] = c_avg[jidx] + j
 
 for i in r_avg:
-    print(round(i/cols, 2), end=' ')
+    print(round(i/cols, 1), end=' ')
 print()
 for i in c_avg:
-    print(round(i/rows, 2), end=' ')
+    print(round(i/rows, 1), end=' ')
 print()
-print(round(total/(rows*cols), 2))
+print(round(total/(rows*cols), 1))
