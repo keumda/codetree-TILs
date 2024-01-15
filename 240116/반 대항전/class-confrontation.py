@@ -13,4 +13,4 @@ for i in range(4):
         max = s
         winner = crr_class
 
-print('Class {0} is winner!'.format(crr_class))
+print('Class {0} is winner!'.format(winner))
