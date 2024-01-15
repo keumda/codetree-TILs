@@ -10,6 +10,7 @@ for i in range(4):
     crr_class = arr[i][0][:-1]
     print('{0} - {1}'.format(crr_class, s))
     if s > max:
+        max = s
         winner = crr_class
 
 print('Class {0} is winner!'.format(crr_class))
