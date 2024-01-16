@@ -4,4 +4,4 @@ a, b = arr[0], arr[1]
 if a > b:
     print(a*b)
 else:
-    print(b/a)
+    print(int(b/a))
