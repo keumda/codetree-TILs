@@ -5,4 +5,5 @@ b = arr[1]
 plus = a + b
 minus = a - b
 
-print(round(plus / minus, 2))
+#format(aa, ".2f")
+print(format(plus / minus, ".2f"))
