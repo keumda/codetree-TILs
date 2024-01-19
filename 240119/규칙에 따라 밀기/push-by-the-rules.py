@@ -12,6 +12,6 @@ if total_step_cnt < 0:
     abs_step_cnt = abs(total_step_cnt)
     a = a[abs_step_cnt:] + a[:abs_step_cnt]
 else:
-    a = a[:abs_step_cnt] + a[abs_step_cnt:]
+    a = a[:total_step_cnt] + a[total_step_cnt:]
 
 print(a)
