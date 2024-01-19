@@ -1,11 +1,9 @@
 cur_str = input()
 first_char = cur_str[0]
 second_char = cur_str[1]
-str_arr = list(cur_str)
 
-for i, c in enumerate(str_arr):
+for i, c in enumerate(cur_str):
     if c == second_char:
-        str_arr[i] = first_char
+        cur_str = cur_str[:i] + first_char + cur_str[i+1:]
 
-result_string = ''.join(str_arr)
-print(result_string)
+print(cur_str)
