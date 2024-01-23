@@ -11,7 +11,6 @@ def is_prime(n):
 c = 0
 for i in range(a, b+1):
     if is_prime(i):
-        print(i)
         c += i
 
 print(c)
