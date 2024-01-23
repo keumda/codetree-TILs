@@ -6,6 +6,6 @@ def make_abs(a):
         a[i] = abs(elem)
     return a
 
-arr = make_abs(arr)
+make_abs(arr) 
 for i in arr:
     print(i, end=' ')
