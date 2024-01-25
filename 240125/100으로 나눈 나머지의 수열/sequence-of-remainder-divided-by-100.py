@@ -1,16 +1,10 @@
 n = int(input())
 
-def find_nth(first, second, n, cnt):
+def find_nth(n):
     if n == 1:
         return 2
     if n == 2:
         return 4
-    curr = first * second % 100
-    first = second
-    second = curr
-    if cnt == n:
-        return curr
-    else:
-        return find_nth(first, second, n, cnt+1)
+    return (find_nth(n-1) * find_nth(n-2))%100
     
-print(find_nth(2, 4, n, 3))
+print(find_nth(n))
