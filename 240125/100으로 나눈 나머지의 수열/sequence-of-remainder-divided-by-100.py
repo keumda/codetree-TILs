@@ -2,9 +2,9 @@ n = int(input())
 
 def find_nth(first, second, n, cnt):
     if n == 1:
-        curr = 2
+        return 2
     if n == 2:
-        curr = 4
+        return 4
     curr = first * second % 100
     first = second
     second = curr
