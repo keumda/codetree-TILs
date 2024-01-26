@@ -1,4 +1,12 @@
 n = int(input())
 arr = list(map(int, input().split()))
 arr.sort()
-print(max(arr[0]+arr[-1], arr[n]+arr[n-1]))
+
+group_max = 0
+for i in range(n):
+    # i번째와 2n - 1 - i번째 원소를 매칭합니다.
+    group_sum = arr[i] + arr[2*n - 1 - i]
+    if group_sum > group_max:
+        # 최댓값을 갱신합니다.
+        group_max = group_sum
+print(group_max)
