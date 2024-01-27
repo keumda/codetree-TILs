@@ -1,3 +1,5 @@
+from datetime import datetime
+
 n = int(input())
 
 arr = []
@@ -5,12 +7,12 @@ for _ in range(n):
     data = tuple(input().split())
     arr.append(data)
 
-min_date = 2100
-rainy_date = ('', '', '')
+rainy_day = ('2100-12-31', '', '')
 for elem in arr:
     if elem[2] == 'Rain':
-        if min_date > int(elem[0][:4]):
-            min_date = int(elem[0][:4])
-            rainy_date = elem
+        date = datetime.strptime(elem[0], '%Y-%m-%d').date()
+        rainy_min_date = datetime.strptime(rainy_day[0], '%Y-%m-%d').date()
+        if  rainy_min_date >= date:
+            rainy_day = elem
 
-print(rainy_date[0], rainy_date[1], rainy_date[2])
+print(rainy_day[0], rainy_day[1], rainy_day[2])
