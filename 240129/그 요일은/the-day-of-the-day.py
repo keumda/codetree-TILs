@@ -10,8 +10,13 @@ def total_days(m, d):
         days += month_days[i]
     return days
 
+target_cnt = 0
 diff = total_days(m1, d1) - total_days(m, d)
-target_cnt = diff // 7
-if days_eng[diff%7] == target_day:
+
+if diff <= 7:
     target_cnt += 1
+else:
+    target_cnt += diff // 7
+    if days_eng[diff%7] == target_day:
+        target_cnt += 1
 print(target_cnt)
