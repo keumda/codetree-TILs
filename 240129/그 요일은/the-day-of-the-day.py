@@ -12,11 +12,9 @@ def total_days(m, d):
 
 target_cnt = 0
 diff = total_days(m1, d1) - total_days(m, d)
-
-if diff <= 7:
+target_cnt += diff // 7
+if diff < 7 and target_day == 'Mon':
     target_cnt += 1
-else:
-    target_cnt += diff // 7
-    if days_eng[diff%7] == target_day:
-        target_cnt += 1
+if days_eng[diff%7] == target_day:
+    target_cnt += 1
 print(target_cnt)
