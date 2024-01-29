@@ -6,7 +6,7 @@ days_eng = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 def total_days(m, d):
     days = d
     for i in range(m):
-        d += month_days[i]
+        days += month_days[i]
     return days
 
 diff = total_days(m1, d1) - total_days(m, d)
