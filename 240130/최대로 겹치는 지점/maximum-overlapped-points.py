@@ -3,7 +3,7 @@ n = int(input())
 slots = [0]*100
 for _ in range(n):
     x, y = tuple(map(int, input().split()))
-    for i in range(x, y+1):
+    for i in range(x-1, y):
         slots[i] += 1
 
 overlap_cnt = 0
