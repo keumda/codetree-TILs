@@ -9,10 +9,9 @@ for elem in arr:
     if curr > t:
         cnt += 1
     else:
-        if cnt > max_cnt:
-            max_cnt = cnt
         cnt = 0
+    if cnt > max_cnt:
+        max_cnt = cnt
     # print(curr, cnt, max_cnt)
-if max_cnt < cnt:
-    max_cnt = cnt
+
 print(max_cnt)
