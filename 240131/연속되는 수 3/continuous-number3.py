@@ -1,11 +1,11 @@
 n = int(input())
 
 cnt = 1
-max_cnt = 0
+max_cnt = 1
 prev = int(input())
 for i in range(n-1):
     curr = int(input())
-    # print(prev, curr)
+    print(prev, curr)
     if prev < 0 and curr < 0:
         cnt += 1
     if prev > 0 and curr > 0:
