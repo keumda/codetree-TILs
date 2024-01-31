@@ -2,15 +2,17 @@ n = int(input())
 
 cnt = 1
 max_cnt = 1
-prev = 0
-for i in range(n):
+prev = int(input())
+for i in range(n-1):
     curr = int(input())
-    # print(prev, curr, cnt)
-    if prev != curr or i == n-1:
+    if prev != curr:
         prev = curr
         if max_cnt < cnt:
             max_cnt = cnt
     else:
         cnt += 1
-    
-print(cnt)
+    # print(prev, curr, cnt)
+
+if max_cnt < cnt:
+    max_cnt = cnt
+print(max_cnt)
