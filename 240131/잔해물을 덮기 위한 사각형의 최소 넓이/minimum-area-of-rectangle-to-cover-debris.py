@@ -1,6 +1,6 @@
 def fill_rect(x, y, x1, y1, num):
-    for i in range(y, y1+1):
-        for j in range(x, x1+1):
+    for i in range(y, y1):
+        for j in range(x, x1):
             arr[i][j] = num
 
 arr = [[0 for j in range(2000)] for i in range(2000)]
@@ -14,20 +14,32 @@ fill_rect(x2+offset, y2+offset, x3+offset, y3+offset, 0)
 min_x, min_y = 2001, 2001
 max_x, max_y = 0, 0
 area = 0
-for i in range(2000):
-    for j in range(2000):
+for i in range(y+offset, y1+offset):
+    for j in range(+offset, x1+offset):
         if arr[i][j] == 1:
-            if i < min_y:
-                min_y = i
-            if j < min_x:
-                min_x = j
-            if i > max_y:
-                max_y = i 
-            if j > max_x:
-                max_x = j
+            # print(i, j)
             area+= 1
+            if i <= min_y:
+                min_y = i
+            if j <= min_x:
+                min_x = j
+            if i >= max_y:
+                max_y = i
+            if j >= max_x:
+                max_x = j
+
+# print(arr[min_y][min_x], arr[max_y][min_x], arr[max_y][max_x], arr[min_y][max_x]) 
+# print(min_x, max_x, min_y, max_y, area)
+
+# for i in range(990, 1005):
+#     for j in range(1000, 1010):
+#         print(arr[i][j], end=' ')
+#     print()
+
+width = max_x - min_x + 1
+height = max_y - min_y + 1
+
 if area != 0:
-    print((max_x-min_x) * (max_y - min_y))
+    print(width * height)
 else:
     print(0)
-# print(min_x, min_y, max_x, max_y, area)
