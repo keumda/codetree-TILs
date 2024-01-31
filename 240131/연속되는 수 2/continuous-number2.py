@@ -9,6 +9,7 @@ for i in range(n-1):
         prev = curr
         if max_cnt < cnt:
             max_cnt = cnt
+        cnt = 1
     else:
         cnt += 1
     # print(prev, curr, cnt)
