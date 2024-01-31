@@ -8,11 +8,15 @@ for _ in range(n):
     if direction == 'R':
         for i in range(start_idx, start_idx+x):
             slots[i] = 'B'
-        start_idx = start_idx + x
+            start_idx = i
+            # print(i)
+        # print(slots[99990:100015])
     if direction == 'L':
-        for i in range(start_idx-1, start_idx-x-1, -1):
+        for i in range(start_idx-x+1, start_idx+1):
             slots[i] = 'W'
-        start_idx = start_idx - x
+            # print(i)
+        start_idx = start_idx-x+1
+        # print(slots[99990:100015])
 
 b_cnt = 0
 w_cnt = 0
