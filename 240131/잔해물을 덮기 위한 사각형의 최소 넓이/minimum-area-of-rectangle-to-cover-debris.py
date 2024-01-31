@@ -1,0 +1,28 @@
+def fill_rect(x, y, x1, y1, num):
+    for i in range(y, y1+1):
+        for j in range(x, x1+1):
+            arr[i][j] = num
+
+arr = [[0 for j in range(2000)] for i in range(2000)]
+offset = 1000
+
+x, y, x1, y1 = tuple(map(int, input().split()))
+fill_rect(x+offset, y+offset, x1+offset, y1+offset, 1)
+x2, y2, x3, y3 = tuple(map(int, input().split()))
+fill_rect(x2+offset, y2+offset, x3+offset, y3+offset, 0)
+
+min_x, min_y = 2000, 2000
+max_x, max_y = 0, 0
+for i in range(2000):
+    for j in range(2000):
+        if arr[i][j] == 1:
+            if i < min_y:
+                min_y = i
+            if j < min_x:
+                min_x = j
+            if i > max_y:
+                max_y = i 
+            if j > max_x:
+                max_x = j
+# print(min_x, min_y, max_x, max_y)   
+print((max_x-min_x) * (max_y - min_y))
