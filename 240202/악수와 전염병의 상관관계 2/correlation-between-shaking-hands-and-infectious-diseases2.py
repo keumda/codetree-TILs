@@ -15,12 +15,15 @@ for elem in t_arr:
     t, x, y = elem
     if devlopers_infected[x] == 1 and devlopers_k[x] > 0:
         devlopers_k[x] -= 1
+        if devlopers_infected[y] != 1:
+            devlopers_k[y] = k
         devlopers_infected[y] = 1
-        devlopers_k[y] = k
+        
     elif devlopers_infected[y] == 1 and devlopers_k[y] > 0:
         devlopers_k[y] -= 1
+        if devlopers_infected[x] != 1:
+            devlopers_k[x] = k
         devlopers_infected[x] = 1
-        devlopers_k[x] = k
     # print(devlopers_infected, devlopers_k)
 
 for elem in devlopers_infected[1:]:
