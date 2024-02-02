@@ -11,5 +11,5 @@ for i in path:
         cur_d_idx += 1
     if i == 'F':
         idx = cur_d_idx % 4
-        x, y = x + dx[cur_d_idx], y + dy[cur_d_idx]
+        x, y = x + dx[idx], y + dy[idx]
 print(x, y)
