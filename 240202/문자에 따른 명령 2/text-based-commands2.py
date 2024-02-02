@@ -10,8 +10,6 @@ for i in path:
     if i == 'R':
         cur_d_idx += 1
     if i == 'F':
-        if cur_d_idx < 0:
-            x, y = x + dx[cur_d_idx], y + dy[cur_d_idx]
-        else:
-            x, y = x + dx[cur_d_idx], y + dy[cur_d_idx]
+        idx = cur_d_idx % 4
+        x, y = x + dx[cur_d_idx], y + dy[cur_d_idx]
 print(x, y)
