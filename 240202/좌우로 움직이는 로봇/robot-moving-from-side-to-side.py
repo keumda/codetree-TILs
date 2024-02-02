@@ -1,7 +1,7 @@
 n, m = tuple(map(int, input().split()))
 
-a_arr = [0]*1000000
-b_arr = [0]*1000000
+a_arr = [0]*1000001
+b_arr = [0]*1000001
 
 a_dist = 0
 a_t = 1
