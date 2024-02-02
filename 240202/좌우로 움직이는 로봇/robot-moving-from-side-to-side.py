@@ -1,7 +1,7 @@
 n, m = tuple(map(int, input().split()))
 
-a_arr = [0]*100001
-b_arr = [0]*100001
+a_arr = [0]*200000
+b_arr = [0]*200000
 
 a_dist = 0
 a_t = 1
@@ -20,7 +20,7 @@ for _ in range(n):
             a_t += 1  
 
 b_dist = 0
-b_t = 1     
+b_t = 1    
 for _ in range(m):
     t, d = tuple(input().split())
     t = int(t)
@@ -45,7 +45,6 @@ for i in range(min(a_t, b_t), max(a_t, b_t)):
         b_arr[i] = b_dist
     else:
         a_arr[i] = a_dist
-
 
 for i in range(1, max(a_t, b_t)):
     if a_arr[i] == b_arr[i] and a_arr[i-1] != b_arr[i-1]:
