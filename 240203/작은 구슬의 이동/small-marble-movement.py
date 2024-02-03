@@ -2,7 +2,7 @@ n, t = tuple(map(int, input().split()))
 r, c, d = tuple(input().split())
 
 r, c = int(r)-1, int(c)-1
-di, dj = [0, -1, 1, 0], [1, 0, 0, -1]
+di, dj = [0, 1, -1, 0], [1, 0, 0, -1]
 mapper = {
     'R': 0,
     'D': 1,
