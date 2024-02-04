@@ -12,11 +12,11 @@ else:
     second_c = 'W'
     third_c = 'B'
 cnt = 0
-for i in range(1, r):
-    for j in range(1, c):
+for i in range(1, r-1):
+    for j in range(1, c-1):
         if arr[i][j] == second_c:
-            for k in range(i+1, r):
-                for l in range(j+1, c):
+            for k in range(i+1, r-1):
+                for l in range(j+1, c-1):
                     if arr[k][l] == third_c and third_c != arr[r-1][c-1]:
                         cnt += 1
 print(cnt)
