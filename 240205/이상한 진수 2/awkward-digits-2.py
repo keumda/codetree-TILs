@@ -6,7 +6,7 @@ def convert_binary(num):
         coverted = (coverted * 2) + int(i)
     return coverted
 
-max_num = n
+max_num = '0'
 for i in range(1, len(n)):
     changed_n = list(n)
     changed_n[i] = str(abs(int(n[i]) - 1))
