@@ -4,7 +4,7 @@ commands = [
     for row in range(n)
 ]
 arr_l = max(commands, key=lambda item: int(item[0]))
-arr = [0]*(int(arr_l[0])+1)
+arr = [0]*(10000)
 
 for c in commands:
     # print(c)
