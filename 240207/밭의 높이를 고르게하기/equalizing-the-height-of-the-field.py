@@ -7,6 +7,6 @@ for i in range(n-t):
     cost = 0
     for j in range(i, i+t):
         cost += abs(h - arr[j])
+        # print(arr[j], end=' ')
     min_cost = min(min_cost, cost)
-    
 print(min_cost)
