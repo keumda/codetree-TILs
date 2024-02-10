@@ -1,18 +1,22 @@
 n, b = tuple(map(int, input().split()))
-arr = [
-    tuple(map(int, input().split()))
-    for _ in range(n)
-]
+arr = []
+
+for i in range(n):
+    s = [i+1]
+    s= s + list(map(int, input().split()))
+    arr.append(s)
+arr.sort(key = lambda x:x[1]+x[2])
+
 max_cnt = 0
 for i in range(n):
-    price = arr[i][0]//2 + arr[i][1]
+    price = arr[i][1]//2 + arr[i][2]
     cnt = 0
     for j in range(n):
         if i != j:
             if price > b:
                 # print(i, j)
-                cnt = j
+                cnt = arr[j-1][0]
                 break
-            price += arr[j][0] + arr[j][1]
+            price += arr[j][1] + arr[j][2]
     max_cnt = max(cnt, max_cnt)
 print(max_cnt)
