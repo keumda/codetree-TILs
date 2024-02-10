@@ -3,6 +3,7 @@ prices = [
     int(input())
     for p in range(n)
 ]
+prices.sort()
 
 max_cnt = 0
 for i in range(n):
