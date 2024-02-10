@@ -6,9 +6,10 @@ arr = [
 max_cnt = 0
 for i in range(n):
     price = arr[i][0]//2 + arr[i][1]
+    cnt = 0
     for j in range(n):
         if i != j:
-            if price >= b:
+            if price > b:
                 # print(i, j)
                 cnt = j
                 break
