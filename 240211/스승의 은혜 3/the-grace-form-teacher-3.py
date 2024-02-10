@@ -3,20 +3,18 @@ arr = [
     tuple(map(int, input().split()))
     for r in range(n)
 ]
-arr.sort(key = lambda x:(x[0]+x[1]))
+# arr.sort(key = lambda x:(x[0]+x[1]))
 # print(arr)
 
 max_cnt = 0
 for i in range(n):
-    cnt = 0
-    price = 0
-    # others = arr[:i]+arr[i+1:]
+    cnt = 1
+    price = arr[i][0]//2 + arr[i][1]
+    others = arr[:i]+arr[i+1:]
+    others.sort(key = lambda x:(x[0]+x[1]))
     # print(others)
-    for j, (p, s) in enumerate(arr):
-        if j == i:
-            price += (p//2 + s)
-        else:
-            price += (p + s)
+    for (p, s) in others:
+        price += (p + s)
         if price <= b:
             cnt += 1
     max_cnt = max(max_cnt, cnt)
