@@ -18,7 +18,8 @@ def is_possible(max_val):
 
 
 minmax = 10000
-for i in range(max(arr)+1):
+for i in range(max(arr[0], arr[-1]), max(arr)+1):
     if is_possible(i):
         minmax = min(minmax, i)
+        # print(i, minmax)
 print(minmax)
