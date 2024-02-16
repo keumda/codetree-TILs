@@ -8,7 +8,7 @@ arr.sort()
 
 for i in range(n):
     cnt = 0
-    for j in range(n):
+    for j in range(n+1):
         if arr[i:j]:
             # print(arr[i:j])
             if max(arr[i:j]) - min(arr[i:j]) <= k:
