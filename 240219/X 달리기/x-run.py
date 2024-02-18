@@ -11,4 +11,4 @@ while True:
     if total_d > dist//2:
         break
     
-print(t*2)
+print(t+v)
