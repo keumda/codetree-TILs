@@ -13,5 +13,5 @@ for i, s in enumerate(str[1:]):
         cnt = 0
     else:
         cnt += 1
-print(min(min_space+1, max_space//2+1))
+print(min(min_space+1, (max_space+1)//2))
 # print(end_idx, min_space, max_space)
