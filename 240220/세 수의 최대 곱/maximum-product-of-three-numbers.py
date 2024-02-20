@@ -1,11 +1,10 @@
 n = int(input())
 arr = list(map(int, input().split()))
+arr.sort()
+# print(arr)
+# all positives
+m1 = arr[-1] * arr[-2] * arr[-3]
+# one positive, two negatives
+m2 = arr[-1] * arr[0] * arr[1]
 
-max_m = 0
-for i in range(n):
-    for j in range(n):
-        for k in range(n):
-            if i != j and j != k and i != k:
-                m = arr[i] * arr[j] * arr[k]
-                max_m = max(max_m, m)
-print(max_m)
+print(max(m1, m2))
