@@ -14,17 +14,20 @@ for i, elem in enumerate(arr):
 
 second_min = 101
 second_min_idx = 0
+is_possible = False
 for j, elem in enumerate(arr):
     if elem > arr_min:
+        # print(elem, second_min, second_min_idx)
         if elem <= second_min:
             if elem == second_min:
+                is_possible = False
                 second_min_idx = -1
             else:
+                is_possible = True
                 second_min = elem
                 second_min_idx = j
-        else:
-            second_min_idx = -1
-if second_min_idx != -1:
-    print(second_min_idx + 1)
+    # print(elem, is_possible, second_min)
+if is_possible:
+    print(second_min_idx+1)
 else:
-    print(second_min_idx)
+    print(-1)
