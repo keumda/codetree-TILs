@@ -20,4 +20,6 @@ for i in range(10):
 dist = abs(lx - bx) + abs(ly - by) - 1
 if lx == bx and bx == rx and ((by > ry and ry > ly) or (by < ry and ry < ly)):
     dist += 2
+if ly == by and by == ry and ((bx > rx and rx > lx) or (bx < rx and rx < lx)):
+    dist += 2
 print(dist)
