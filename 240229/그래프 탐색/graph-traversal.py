@@ -21,7 +21,7 @@ dfs(1)
 # print(visited)
 
 cnt = 0
-for v in visited:
+for v in visited[2:]:
     if v:
         cnt += 1
-print(cnt-1)
+print(cnt)
