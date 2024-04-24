@@ -8,10 +8,6 @@ visited = [
     [0 for _ in range(m)]
     for _ in range(n)
 ]
-answer = [
-    [0 for _ in range(m)]
-    for _ in range(n)
-]
 
 def in_range(i, j):
     return 0 <= i and i < n and 0 <= j and j < m
