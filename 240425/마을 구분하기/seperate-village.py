@@ -29,14 +29,17 @@ def dfs(i, j):
     for di, dj in zip(dis, djs):
         new_i, new_j = i + di, j + dj
         if can_go(new_i, new_j):
-            cnt += 1
             visited[new_i][new_j] = 1
+            cnt += 1
             dfs(new_i, new_j)
+    
 
 for i in range(n):
     for j in range(n):
         if grid[i][j] == 1 and visited[i][j] == 0:
             cnt = 0
+            visited[i][j] = 1
+            cnt += 1
             dfs(i, j)
             res.append(cnt)
 print(len(res))
