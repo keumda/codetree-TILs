@@ -1,5 +1,4 @@
 import sys
-
 sys.setrecursionlimit(3000)
 
 n, m = map(int, input().split())
@@ -7,20 +6,21 @@ grid = [
     list(map(int, input().split()))
     for _ in range(n)
 ]
-after_grid = [
-    [0 for _ in range(m)]
-    for _ in range(n)
-]
+# after_grid = [
+#     [0 for _ in range(m)]
+#     for _ in range(n)
+# ]
 
 def in_range(i, j):
     return 0 <= i and i < n and 0 <= j and j < m
 
 def can_go(i, j):
+    global k
     if not in_range(i, j):
         return False
     if visited[i][j] == 1:
         return False
-    if after_grid[i][j] == 0:
+    if grid[i][j] <= k:
         return False
     return True
 
@@ -39,12 +39,12 @@ for r in grid:
 
 res = []
 for k in range(1, max_k+1):
-    for r in range(n):
-        for c in range(m):
-            if grid[r][c] <= k:
-                after_grid[r][c] = 0
-            else:
-                after_grid[r][c] = 1
+    # for r in range(n):
+    #     for c in range(m):
+    #         if grid[r][c] <= k:
+    #             after_grid[r][c] = 0
+    #         else:
+    #             after_grid[r][c] = 1
     visited = [
         [0 for _ in range(m)]
         for _ in range(n)
@@ -52,7 +52,7 @@ for k in range(1, max_k+1):
     cnt = 0
     for x in range(n):
         for y in range(m):
-            if after_grid[x][y] == 1 and visited[x][y] == 0:
+            if grid[x][y] > k and visited[x][y] == 0:
                 visited[x][y] = 1
                 dfs(x, y)
                 cnt += 1
