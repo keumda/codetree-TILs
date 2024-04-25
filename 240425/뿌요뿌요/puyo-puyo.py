@@ -43,7 +43,8 @@ for x in range(n):
             visited[x][y] = 1
             cnt += 1
             dfs(x, y)
-    res.append(cnt)
+            res.append(cnt)
+# print(res)
 
 exploded = 0
 max_cnt = 0
