@@ -41,6 +41,8 @@ def bfs():
                 q.append([new_x, new_y])
 
 for st_x, st_y in ks:
+    st_x = st_x - 1
+    st_y = st_y - 1
     visited = [
         [False for _ in range(n)]
         for _ in range(n)
