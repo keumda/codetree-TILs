@@ -39,7 +39,7 @@ visited[0][0] = True
 q.append([0, 0])
 bfs()
 
-if grid[n-1][m-1]:
+if visited[n-1][m-1]:
     print(1)
 else:
     print(0)
