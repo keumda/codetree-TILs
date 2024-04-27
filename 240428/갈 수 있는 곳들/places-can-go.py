@@ -9,10 +9,11 @@ ks = [
     list(map(int, input().split()))
     for _ in range(k) 
 ]
-total_visited = [
+visited = [
     [False for _ in range(n)]
     for _ in range(n)
 ]
+
 
 q = deque()
 
@@ -37,18 +38,14 @@ def bfs():
             # print(new_x, new_y)
             if can_go(new_x, new_y):
                 visited[new_x][new_y] = True
-                total_visited[new_x][new_y] = True
+                # total_visited[new_x][new_y] = True
                 q.append([new_x, new_y])
 
 for st_x, st_y in ks:
-    st_x = st_x - 1
-    st_y = st_y - 1
-    visited = [
-        [False for _ in range(n)]
-        for _ in range(n)
-    ]
+    st_x, st_y = st_x - 1, st_y - 1
+
     visited[st_x][st_y] = True
-    total_visited[st_x][st_y] = True
+    # total_visited[st_x][st_y] = True
     q.append([st_x, st_y])
     # print(st_x, st_y)
     bfs()
@@ -57,6 +54,7 @@ for st_x, st_y in ks:
 cnt = 0
 for i in range(n):
     for j in range(n):
-        if total_visited[i][j]:
+        # if total_visited[i][j]:
+        if visited[i][j]:
             cnt += 1
 print(cnt)
