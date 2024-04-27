@@ -48,6 +48,7 @@ for st_x, st_y in ks:
         for _ in range(n)
     ]
     visited[st_x][st_y] = True
+    total_visited[st_x][st_y] = True
     q.append([st_x, st_y])
     # print(st_x, st_y)
     bfs()
