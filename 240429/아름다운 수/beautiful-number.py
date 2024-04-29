@@ -40,7 +40,7 @@ def choose(curr):
         count()
         return
     else:
-        for j in range(1, 4):
+        for j in range(1, 5):
             res.append(j)
             choose(curr + 1)
             res.pop()
