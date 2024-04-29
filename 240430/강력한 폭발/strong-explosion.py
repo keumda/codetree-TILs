@@ -52,7 +52,7 @@ def choose(n):
     if n == len(pts):
         count()
         return
-    for i in range(3):
+    for i in range(1, 4):
         x, y = pts[n]
         bomb_type[x][y] = i
         choose(n + 1)
@@ -60,11 +60,11 @@ def choose(n):
 
 
 def fill_grid(i, j, k):
-    if k == 0:
-            dis, djs = [-2, -1, 1, 2], [0, 0, 0, 0]
     if k == 1:
-            dis, djs = [-1, 1, 0, 0], [0, 0, -1, 1]
+            dis, djs = [-2, -1, 1, 2], [0, 0, 0, 0]
     if k == 2:
+            dis, djs = [-1, 1, 0, 0], [0, 0, -1, 1]
+    if k == 3:
             dis, djs = [-1, -1, 1, 1], [-1, 1, -1, 1]
     visited[i][j] = True
     for di, dj in zip(dis, djs):
