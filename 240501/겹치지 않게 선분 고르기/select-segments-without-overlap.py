@@ -1,6 +1,6 @@
 n = int(input())
 pts = [
-    map(int, input().split())
+    list(map(int, input().split()))
     for _ in range(n)
 ]
 lines = []
@@ -15,17 +15,24 @@ def check_cross(x, y):
     return True
 
 def backtrack(idx):
-    global lines, n, max_cnt
+    global lines, n, max_cnt, pts
     if idx == n:
-        # print(lines)
         max_cnt = max(max_cnt, len(lines))
         lines = []
         return
-    curr_x, curr_y = pts[idx]
-    if check_cross(curr_x, curr_y):
-        lines.append([curr_x, curr_y])
+    # print(pts[idx])
+    for i in range(n):
+        if i != idx:
+            curr_x, curr_y = pts[i]
+            if check_cross(curr_x, curr_y):
+                lines.append([curr_x, curr_y])
     backtrack(idx + 1)
     return
 
-backtrack(0)
+for i in range(n):
+    curr_x, curr_y = pts[i]
+    if check_cross(curr_x, curr_y):
+        lines.append([curr_x, curr_y])
+    backtrack(i)
+
 print(max_cnt)
