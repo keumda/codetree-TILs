@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(400000)
+sys.setrecursionlimit(200000)
 
 n, m, c = map(int, input().split())
 gird = [
@@ -34,35 +34,34 @@ def find_max_weight(x, y, curr):
 
 def select(x, y):
     global calc_w
-    find_max_weight(x, y, 1)
+
+    find_max_weight(x, y, 0)
     w1 = max(calc_w)
     calc_w = []
+
     for i in range(n):
         for j in range(n-m+1):
-            if i != x or j != y: 
-                if x == i:
-                    if (i >= y and i <= y + m) or (i + m >= y and i + m <= y + m):
-                        break
-                    else:
-                        find_max_weight(i, j, 1)
-                        w2 = max(calc_w)
-                        calc_w = []
-                        res.append(w1 + w2)
-                        # print('back:', i, j, w1, w2, w1+w2)
-                else:
-                    find_max_weight(i, j, 1)
-                    w2 = max(calc_w)
-                    calc_w = []
-                    res.append(w1 + w2)
-                    # print('back:', i, j, w1, w2, w1+w2)
+            if x == i and (j >= y and j < y+m):
+                continue
+            elif x == i and (n - m < m):
+                continue
+            else:
+                find_max_weight(i, j, 0)
+                w2 = max(calc_w)
+                calc_w = []
+                res.append(w1 + w2)
+                # print('back:', i, j, w1, w2, w1+w2)
+                # print(res)
     return
 
 for x in range(n):
     for y in range(n-m+1):
+        # print(x, y)
         select(x, y)
 
-# 2, 6, 4
-# find_max_weight(1, 1, 1)
-# calc_w = []
-
 print(max(res))
+
+# 1, 2, 3
+# find_max_weight(0, 0, 0)
+# print(max(calc_w))
+# calc_w = []
