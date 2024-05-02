@@ -9,20 +9,34 @@ gird = [
 max_weight = 0
 res = []
 
-def find_weight(x, y):
-    res = []
-    w = 0
-    # print('x, y)
-    for i in range(y, y+m):
-        w += gird[x][i]
-        if w > c:
-            break
-        res.append(gird[x][i])
-    total = sum([x*x for x in res])
-    return total
+# select m and find max sum
+wl = []
+pts = []
+calc_w = []
+max_weight = 0
+def find_max_weight(x, y, curr):
+    global wl, pts
+    if curr == m:
+        if sum(wl) <= c:
+            weight = sum([x*x for x in wl])
+            # print(wl, weight)
+            calc_w.append(weight)
+        wl = []
+        pts = []
+        return
+    else:
+        for i, elem in enumerate(gird[x][y:y+m]):
+            if i not in pts:
+                wl.append(elem)
+                pts.append(i)
+                find_max_weight(x, y, curr + 1)        
+        return
 
-def backtrack(x, y):
-    w1 = find_weight(x, y)
+def select(x, y):
+    global calc_w
+    find_max_weight(x, y, 1)
+    w1 = max(calc_w)
+    calc_w = []
     for i in range(n):
         for j in range(n-m+1):
             if i != x or j != y: 
@@ -30,22 +44,25 @@ def backtrack(x, y):
                     if (i >= y and i <= y + m) or (i + m >= y and i + m <= y + m):
                         break
                     else:
-                        w2 = find_weight(i, j)
+                        find_max_weight(i, j, 1)
+                        w2 = max(calc_w)
+                        calc_w = []
                         res.append(w1 + w2)
                         # print('back:', i, j, w1, w2, w1+w2)
                 else:
-                    w2 = find_weight(i, j)
+                    find_max_weight(i, j, 1)
+                    w2 = max(calc_w)
+                    calc_w = []
                     res.append(w1 + w2)
                     # print('back:', i, j, w1, w2, w1+w2)
-            # backtrack(x+1, y+1)     
     return
-
-def in_range(x, y):
-    return x >= 0 and x < n and y >= 0 and y < n
 
 for x in range(n):
     for y in range(n-m+1):
-        # print('call', x, y)
-        backtrack(x, y)
+        select(x, y)
+
+# 2, 6, 4
+# find_max_weight(1, 1, 1)
+# calc_w = []
 
 print(max(res))
