@@ -21,7 +21,7 @@ def backtrack(idx):
         lines = []
         return
     # print(pts[idx])
-    for i in range(idx, n):
+    for i in range(n):
         if i != idx:
             curr_x, curr_y = pts[i]
             if check_cross(curr_x, curr_y):
