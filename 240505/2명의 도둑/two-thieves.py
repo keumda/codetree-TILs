@@ -23,13 +23,9 @@ def find_max(x, y):
     global wl, max_val, grid
     wl = grid[x][y:y + m]
     max_val = 0
-    # print(wl)
     find_max_weight(0, 0, 0)
     return max_val
 
-
-# j ----- j + m
-# y ----- y + m
 def select(x, y):
     w1 = find_max(x, y)
 
@@ -46,22 +42,13 @@ def select(x, y):
                 else:
                     w2 = find_max(i, j)
                     res.append(w1 + w2)
-                
-                    # if x == 2 and y == 1:
-                    #     print('back:', x, y, i, j, w1, w2, w1+w2)
-
             else:
                 w2 = find_max(i, j)
                 res.append(w1 + w2)
-                
-                # if x == 2 and y == 1:
-                #     print('back:', x, y, i, j, w1, w2, w1+w2)
     return
 
 for x in range(n):
     for y in range(n-m+1):
-        # print(x, y)
         select(x, y)
 
-# print(res)
 print(max(res))
