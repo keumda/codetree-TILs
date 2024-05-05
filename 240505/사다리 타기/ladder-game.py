@@ -55,6 +55,8 @@ def choose(idx, cnt):
     if cnt == m or idx == m:
         curr_status = []
         return
+    if status[idx] not in curr_status:
+        curr_status.append(status[idx])
     for i in range(idx + 1, m):
         if i not in curr_status:
             curr_a, curr_b = status[i]
@@ -62,6 +64,5 @@ def choose(idx, cnt):
             choose(idx + 1, cnt + 1)
 
 for idx in range(m):
-    curr_status.append(status[idx])
     choose(idx, 1)
 print(min_len)
