@@ -56,9 +56,7 @@ def find_min_lines(cnt):
 
 def choose(cnt):
     global min_len
-    if cnt == m:
-        return
-    if res == calc(curr_status):
+    if cnt == m and res == calc(curr_status):
         min_len = min(min_len, len(curr_status))
         return
     
