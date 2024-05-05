@@ -31,14 +31,11 @@ def calculate():
             val = curr + alpha_map[second]
         if sigh == '-':
             val = curr - alpha_map[second]
-        # if alpha_map['a'] == 4 and alpha_map['b'] == 4 and alpha_map['c'] == 1:
-        #     print(curr, sigh, second, val)
+
         curr = val
         idx += 1
 
         if idx + 2 >= len(formula):
-            # if curr >= 12:
-            #     print(alpha_map)
             res.append(curr)
             break
         
