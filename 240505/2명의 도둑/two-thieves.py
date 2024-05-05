@@ -36,16 +36,26 @@ def select(x, y):
     for i in range(n):
         for j in range(n-m+1):
             if x == i:
-                if(j >= y and j <= y + m):
+                # y:0, j: 1
+                if(j > y and j < y + m):
                     continue
-                if(j+m >= y and j+m <= y + m):
+                if(j+m > y and j+m < y + m):
                     continue
+                if j == y and j + m == y + m:
+                    continue
+                else:
+                    w2 = find_max(i, j)
+                    res.append(w1 + w2)
+                
+                    # if x == 2 and y == 1:
+                    #     print('back:', x, y, i, j, w1, w2, w1+w2)
+
             else:
                 w2 = find_max(i, j)
                 res.append(w1 + w2)
-                # if w1 + w2 > 450:
+                
+                # if x == 2 and y == 1:
                 #     print('back:', x, y, i, j, w1, w2, w1+w2)
-                # print(res)
     return
 
 for x in range(n):
