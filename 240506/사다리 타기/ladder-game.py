@@ -53,25 +53,20 @@ def find_min_lines(cnt):
     curr_status.pop()
 	
     find_min_lines(cnt + 1)
-# def choose(cnt):
-#     global curr_status, min_len
-#     curr_res = calc(curr_status)
 
-#     if cnt == m:
-#         curr_status = []
-#         return
-#     if res == curr_res:
-#         if len(curr_status) == 5:
-#             print(curr_status, curr_res, res)
-#         min_len = min(min_len, len(curr_status))
-#         curr_status = []
-#         return
+def choose(cnt):
+    global min_len
+    if cnt == m:
+        return
+    if res == calc(curr_status):
+        min_len = min(min_len, len(curr_status))
+        return
     
-#     curr_status.append(status[cnt])
-#     choose(cnt + 1)
-#     curr_status.pop()
+    curr_status.append(status[cnt])
+    choose(cnt + 1)
+    curr_status.pop()
 
-#     choose(cnt + 1)
+    choose(cnt + 1)
 
-find_min_lines(0)
+choose(0)
 print(min_len)
