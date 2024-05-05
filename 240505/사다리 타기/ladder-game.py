@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(20000)
+
 n, m = map(int, input().split())
 status = [
     list(map(int, input().split()))
