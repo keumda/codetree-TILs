@@ -40,19 +40,19 @@ def find_next(a, b, grid):
     return is_exist
 
 res = calc(status)
-def find_min_lines(cnt):
-    global min_len
+# def find_min_lines(cnt):
+#     global min_len
     
-    if cnt == m:
-        if res == calc(curr_status):
-            min_len = min(min_len, len(curr_status))
-        return
+#     if cnt == m:
+#         if res == calc(curr_status):
+#             min_len = min(min_len, len(curr_status))
+#         return
     
-    curr_status.append(status[cnt])
-    find_min_lines(cnt + 1)
-    curr_status.pop()
+#     curr_status.append(status[cnt])
+#     find_min_lines(cnt + 1)
+#     curr_status.pop()
 	
-    find_min_lines(cnt + 1)
+#     find_min_lines(cnt + 1)
 
 def choose(cnt):
     global min_len
@@ -60,12 +60,12 @@ def choose(cnt):
     if cnt == m:
         if res == calc(curr_status):
             min_len = min(min_len, len(curr_status))
-            return
+        return
 
     curr_status.append(status[cnt])
     choose(cnt + 1)
     curr_status.pop()
-    
+
     choose(cnt + 1)
 
 choose(0)
