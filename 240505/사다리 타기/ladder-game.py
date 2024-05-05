@@ -1,6 +1,3 @@
-import sys
-sys.setrecursionlimit(20000)
-
 n, m = map(int, input().split())
 status = [
     list(map(int, input().split()))
@@ -43,23 +40,28 @@ def find_next(a, b, grid):
     return is_exist
 
 res = calc(status)
-def choose(idx):
+def choose(idx, cnt):
     global curr_status, min_len
     curr_res = calc(curr_status)
+    # if idx == 1:
+    #     print(curr_status, curr_res)
+    
     if res == curr_res:
         # print(res, curr_res, len(curr_status))
+        # print(curr_status)
         min_len = min(min_len, len(curr_status))
         curr_status = []
         return
-    if idx == m:
+    if cnt == m or idx == m:
+        curr_status = []
         return
-    curr_status.append(status[idx])
-    for i in range(m):
-        if i != idx:
+    for i in range(idx + 1, m):
+        if i not in curr_status:
             curr_a, curr_b = status[i]
             curr_status.append([curr_a, curr_b])
-            choose(idx + 1)
+            choose(idx + 1, cnt + 1)
 
 for idx in range(m):
-    choose(idx)
+    curr_status.append(status[idx])
+    choose(idx, 1)
 print(min_len)
