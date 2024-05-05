@@ -40,27 +40,38 @@ def find_next(a, b, grid):
     return is_exist
 
 res = calc(status)
-def choose(idx, cnt):
-    global curr_status, min_len
-    curr_res = calc(curr_status)
-    # if idx == 1:
-    #     print(curr_status, curr_res)
+def find_min_lines(cnt):
+    global min_len
     
-    if res == curr_res:
-        # print(res, curr_res, len(curr_status))
-        # print(curr_status, res, curr_res)
-        min_len = min(min_len, len(curr_status))
-        curr_status = []
+    if cnt == m:
+        if res == calc(curr_status):
+            min_len = min(min_len, len(curr_status))
         return
-    if cnt == m or idx == m:
-        curr_status = []
-        return
-    if status[idx] not in curr_status:
-        curr_status.append(status[idx])
-        # print('here/????')
-        choose(idx + 1, cnt + 1)
-        
+    
+    curr_status.append(status[cnt])
+    find_min_lines(cnt + 1)
+    curr_status.pop()
+	
+    find_min_lines(cnt + 1)
+# def choose(cnt):
+#     global curr_status, min_len
+#     curr_res = calc(curr_status)
 
-for idx in range(m):
-    choose(idx, 0)
+#     if cnt == m:
+#         curr_status = []
+#         return
+#     if res == curr_res:
+#         if len(curr_status) == 5:
+#             print(curr_status, curr_res, res)
+#         min_len = min(min_len, len(curr_status))
+#         curr_status = []
+#         return
+    
+#     curr_status.append(status[cnt])
+#     choose(cnt + 1)
+#     curr_status.pop()
+
+#     choose(cnt + 1)
+
+find_min_lines(0)
 print(min_len)
