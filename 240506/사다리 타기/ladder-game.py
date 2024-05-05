@@ -61,7 +61,7 @@ def choose(idx, cnt):
         if i not in curr_status:
             curr_a, curr_b = status[i]
             curr_status.append([curr_a, curr_b])
-            choose(idx + 1, cnt + 1)
+            choose(i + 1, cnt + 1)
 
 for idx in range(m):
     choose(idx, 1)
