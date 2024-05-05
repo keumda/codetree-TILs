@@ -48,7 +48,7 @@ def choose(idx, cnt):
     
     if res == curr_res:
         # print(res, curr_res, len(curr_status))
-        # print(curr_status)
+        # print(curr_status, res, curr_res)
         min_len = min(min_len, len(curr_status))
         curr_status = []
         return
@@ -57,12 +57,10 @@ def choose(idx, cnt):
         return
     if status[idx] not in curr_status:
         curr_status.append(status[idx])
-    for i in range(idx + 1, m):
-        if i not in curr_status:
-            curr_a, curr_b = status[i]
-            curr_status.append([curr_a, curr_b])
-            choose(i + 1, cnt + 1)
+        # print('here/????')
+        choose(idx + 1, cnt + 1)
+        
 
 for idx in range(m):
-    choose(idx, 1)
+    choose(idx, 0)
 print(min_len)
