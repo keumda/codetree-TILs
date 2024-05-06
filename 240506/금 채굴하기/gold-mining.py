@@ -1,64 +1,52 @@
-n, m = map(int, input().split())
+# 변수 선언 및 입력
+n, m = tuple(map(int, input().split()))
 grid = [
     list(map(int, input().split()))
     for _ in range(n)
 ]
 
-def digging_price(k):
-    return (k * k) + (k + 1) * (k + 1)
 
-total_gold = 0
-for i in range(n):
-    for j in range(n):
-        if grid[i][j] == 1:
-            total_gold += 1
+# 주어진 k에 대하여 마름모의 넓이를 반환합니다.
+def get_area(k):
+    return k * k + (k + 1) * (k + 1)
 
-max_k = 0
-max_digging_price = total_gold * m
-while True:
-    if digging_price(max_k) >= max_digging_price:
-        break
-    max_k += 1
-answer = []
-shapes = []
 
-def find_profit(i, j, k):
-    if k == max_k:
-        return
-    # count gold in range and calculate profit for that position
-    gold_cnt = count_gold(i, j, k)
-    curr_profit = gold_cnt * m - digging_price(k)
-    if curr_profit > 0:
-        answer.append(gold_cnt)
-    find_profit(i, j, k + 1)
+# 주어진 좌표가 격자에 표함되는지 여부를 반환합니다.
+def in_range(x, y):
+    return 0 <= x and x < n and 0 <= y and y < n
 
-def count_gold(i, j, k):
-    # print(i, j, k)
-    pts = list()
-    cnt = 0
-    if grid[i][j] == 1:
-        cnt += 1
-    pts.append([i, j])
 
-    dxs, dys = [1, -1, 0, 0], [0, 0, -1, 1]
-
-    for curr_k in range(1, k+1):
-        curr_x, curr_y = i - curr_k, j # 순회 시작점 설정
+# 주어진 k에 대하여 채굴 가능한 금의 개수를 반환합니다.
+def get_num_of_gold(row, col, k):
+    num_of_gold = 0
+    # 방향에 따라 바뀌는 x와 y의 변화량을 정의합니다.
+    dxs, dys = [1, 1, -1, -1], [-1, 1, 1, -1]
+    
+    num_of_gold += grid[row][col] # k = 0 일 때 처리
+    
+    for curr_k in range(1, k + 1):
+        curr_x, curr_y = row - curr_k, col # 순회 시작점 설정
         for dx, dy in zip(dxs, dys):
             for step in range(curr_k):
                 if in_range(curr_x, curr_y):
-                    cnt += grid[curr_x][curr_y]
+                    num_of_gold += grid[curr_x][curr_y]
+                
                 curr_x = curr_x + dx
                 curr_y = curr_y + dy
-    return cnt
+    
+    return num_of_gold
 
 
-def in_range(i, j):
-    return i >= 0 and i < n and j >= 0 and j < n
+max_gold = 0
 
-max_k = 2
-for i in range(n):
-    for j in range(n):
-        find_profit(i, j, 0)
+# 격자의 각 위치가 마름모의 중앙일 때 채굴 가능한 금의 개수를 구합니다.
+for row in range(n):
+    for col in range(n):
+        for k in range(2 * (n - 1) + 1):
+            num_of_gold = get_num_of_gold(row, col, k)
+            
+            # 손해를 보지 않으면서 채굴할 수 있는 최대 금의 개수를 저장합니다.
+            if num_of_gold * m >= get_area(k):
+                max_gold = max(max_gold, num_of_gold)
 
-print(max(answer))
+print(max_gold)
