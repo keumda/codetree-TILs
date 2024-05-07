@@ -42,7 +42,7 @@ max_gold = 0
 # 격자의 각 위치가 마름모의 중앙일 때 채굴 가능한 금의 개수를 구합니다.
 for row in range(n):
     for col in range(n):
-        for k in range(2n):
+        for k in range(2*n):
             num_of_gold = get_num_of_gold(row, col, k)
             
             # 손해를 보지 않으면서 채굴할 수 있는 최대 금의 개수를 저장합니다.
