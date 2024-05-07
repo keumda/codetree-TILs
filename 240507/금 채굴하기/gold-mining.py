@@ -47,14 +47,18 @@ for i in range(n):
 max_k = 0
 max_digging_price = total_gold * m
 while True:
+    max_k += 1
     if get_area(max_k) >= max_digging_price:
         break
-    max_k += 1
 
+
+
+# print(max_digging_price, get_area(max_k), max_k)
 # 격자의 각 위치가 마름모의 중앙일 때 채굴 가능한 금의 개수를 구합니다.
 for row in range(n):
     for col in range(n):
         for k in range(max_k):            
             num_of_gold = get_num_of_gold(row, col, k)
+            # print(num_of_gold)
             max_gold = max(max_gold, num_of_gold)
 print(max_gold)
