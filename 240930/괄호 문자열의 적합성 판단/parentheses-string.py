@@ -5,14 +5,10 @@ for i in s:
     if i == '(':
         stack.append(i)
     else:
-        if len(stack) < 1:
+        if len(stack) == 0:
             isValid = False
             break
-        else:
-            pair = stack.pop()
-            if pair != ')':
-                isValid = False
-                break
+        stack.pop()
 if len(stack) > 0:
     isValid = False
 if isValid:
