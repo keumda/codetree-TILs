@@ -71,10 +71,12 @@ class DoublyLinkedList:
 
 
 n, m = map(int, input().split())
-l = DoublyLinkedList()
 breads = input()
+
+l = DoublyLinkedList()
 for char in breads:
     l.push_back(char)
+
 it = l.end()
 
 for i in range(m):
@@ -87,7 +89,7 @@ for i in range(m):
             it = it.next
     if cmd[0] == 'D':
         if it != l.end():
-            l.erase(it)
+            it = l.erase(it)
     if cmd[0] == 'P':
         l.insert(it, cmd[1])
 
