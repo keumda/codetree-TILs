@@ -1,13 +1,14 @@
+from collections import deque
 n = int(input())
 
-arr = []
+dq = deque()
 for i in range(1, n+1):
-    arr.append(i)
+    dq.append(i)
 
 while True:
-    if len(arr) == 1:
+    if len(dq) == 1:
         break
-    arr = arr[1:]
-    first = arr[0]
-    arr = arr[1:] + [first]
-print(arr[0])
+    dq.popleft()
+    first = dq.popleft()
+    dq.append(first)
+print(dq[0])
